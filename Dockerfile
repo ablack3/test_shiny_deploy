@@ -4,5 +4,5 @@ RUN sed -i -e 's/\blisten 3838\b/listen 8080/g' /etc/shiny-server/shiny-server.c
 
 COPY app.R /srv/shiny-server/app/app.R
 
-EXPOSE 3838
+EXPOSE 8080
 
