@@ -1,0 +1,14 @@
+docker build -t pioneer .
+
+docker run --rm -ti -e APPLICATION_LOGS_TO_STDOUT=true -p 8080:8080 --name adam --memory="5g" 173
+sudo docker run -it --memory="1g" ubuntu
+docker ps
+docker exec -it adam /bin/bash
+
+cat /var/log/shiny-server//app-shiny-20230512-170325-38165.log
+
+docker run -p 3838:3838 ca77
+
+control-c to exit
+
+http://localhost:3838/app

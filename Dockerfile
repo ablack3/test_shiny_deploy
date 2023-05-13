@@ -6,3 +6,5 @@ COPY app.R /srv/shiny-server/app/app.R
 
 EXPOSE 8080
 
+CMD Rscript -e shiny::runApp('/srv/shiny-server/app', port = 8080, host = '0.0.0.0')
+
