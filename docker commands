@@ -12,3 +12,7 @@ docker run -p 3838:3838 ca77
 control-c to exit
 
 http://localhost:3838/app
+
+
+
+FROM --platform=linux/amd64 adambodysseus/rockershinyverseplus:v0.1
