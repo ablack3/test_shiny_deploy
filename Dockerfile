@@ -16,14 +16,7 @@ COPY ./apache.crt /etc/ssl/certs/apache.crt
 RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
 # find an replace
-RUN sed -i -e '/s</VirtualHost>/       SSLEngine on
-        SSLCertificateFile /etc/ssl/certs/apache.crt
-        SSLCertificateKeyFile /etc/ssl/private/apache.key
-        ProxyPreserveHost On
-        ProxyPass / http://0.0.0.0:3838/
-        ProxyPassReverse / http://0.0.0.0:3838/
-        ServerName localhost
-</VirtualHost>' etc/apache2/sites-enabled/000-default.conf
+RUN sed -i -e '/s</VirtualHost>/       SSLEngine on\n        SSLCertificateFile /etc/ssl/certs/apache.crt\n        SSLCertificateKeyFile /etc/ssl/private/apache.key\n        ProxyPreserveHost On\n        ProxyPass / http://0.0.0.0:3838/\n        ProxyPassReverse / http://0.0.0.0:3838/\n        ServerName localhost\n</VirtualHost>' etc/apache2/sites-enabled/000-default.conf
 
 RUN service apache2 restart
 
