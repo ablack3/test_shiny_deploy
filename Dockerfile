@@ -13,6 +13,8 @@ COPY ./apache.crt /etc/ssl/certs/apache.crt
 #RUN openssl genrsa -out /etc/ssl/private/apache.key 2048
 #RUN openssl req -new -x509 -key /etc/ssl/private/apache.key -days 365 -sha256 -out /etc/ssl/certs/apache.crt
 # Need to enter domain name as common name
+
+# install apache services
 RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
 # find an replace
@@ -27,7 +29,6 @@ RUN sed -i -e '/s</VirtualHost>/       SSLEngine on
 
 RUN service apache2 restart
 
-nano /etc/apache2/sites-enabled/000-default.conf
 
 #RUN sed -i -e 's/\blisten 3838\b/listen 8080/g' /etc/shiny-server/shiny-server.conf
 
