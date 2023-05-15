@@ -30,7 +30,6 @@ RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
 RUN service apache2 restart
 
 #RUN sed -i -e 's/\blisten 3838\b/listen 8080/g' /etc/shiny-server/shiny-server.conf
-
 COPY app.R /srv/shiny-server/app/app.R
 
 
