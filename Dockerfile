@@ -1,7 +1,5 @@
 FROM --platform=linux/amd64 rocker/shiny-verse:latest
 
-FROM rocker/shiny-verse:latest
-
 RUN sudo apt update
 
 RUN sudo apt install -y apache2 iproute2 vim
