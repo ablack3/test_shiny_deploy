@@ -5,7 +5,7 @@ FROM rocker/shiny-verse:latest
 RUN sudo apt update
 
 RUN sudo apt install apache2 \
-  iproute2
+  iproute2 \
   vim
   
 COPY ./apache.crt /etc/ssl/certs/apache.crt
