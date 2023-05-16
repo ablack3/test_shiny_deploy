@@ -15,7 +15,7 @@ COPY ./apache.key /etc/ssl/private/apache.key
 # install apache services
 RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
-RUN sed -e "s/</VirtualHost>//g" -i etc/apache2/sites-enabled/000-default.conf
+RUN sed 's/</VirtualHost>//' etc/apache2/sites-enabled/000-default.conf
 RUN echo "        SSLEngine on" >> etc/apache2/sites-enabled/000-default.conf
 RUN echo "        SSLCertificateFile /etc/ssl/certs/apache.crt" >> etc/apache2/sites-enabled/000-default.conf
 RUN echo "        SSLCertificateKeyFile /etc/ssl/private/apache.key" >> etc/apache2/sites-enabled/000-default.conf
