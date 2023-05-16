@@ -12,6 +12,7 @@ RUN sudo apt install -y apache2 iproute2 vim
 COPY ./apache.crt /etc/ssl/certs/apache.crt
 COPY ./apache.key /etc/ssl/private/apache.key
 
+
 # install apache services
 RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
