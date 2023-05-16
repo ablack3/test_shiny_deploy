@@ -1,9 +1,10 @@
 FROM --platform=linux/amd64 rocker/shiny-verse:latest
 
-RUN sudo apt update
+RUN apt update
+RUN apt install -y apache2 iproute2 vim 
+RUN apt install apache2-utils  
+RUN apt clean
 
-RUN sudo apt install -y apache2 iproute2 vim
-  
 # create the cert
 #RUN openssl genrsa -out /etc/ssl/private/apache.key 2048
 #RUN openssl req -new -x509 -key /etc/ssl/private/apache.key -days 365 -sha256 -out /etc/ssl/certs/apache.crt
@@ -33,6 +34,9 @@ RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balance
 COPY apache.conf etc/apache2/sites-enabled/000-default.conf
 
 RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
+
+EXPOSE 80
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
 
 RUN service apache2 restart
 
