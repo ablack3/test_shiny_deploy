@@ -1,6 +1,6 @@
 FROM --platform=linux/amd64 rocker/shiny-verse:latest
-RUN apt update
-RUN apt upgrade
+RUN apt -y update
+RUN apt -y upgrade
 RUN apt install -y nginx iproute2 vim 
 COPY ./apache.crt /etc/ssl/certs/apache.crt
 COPY ./apache.key /etc/ssl/private/apache.key
