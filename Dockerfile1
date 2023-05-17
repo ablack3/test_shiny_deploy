@@ -1,9 +1,10 @@
 FROM --platform=linux/amd64 rocker/shiny-verse:latest
 
 RUN apt update
-RUN apt install -y apache2 iproute2 vim 
-RUN apt install apache2-utils  
-RUN apt clean
+RUN apt upgrade
+RUN apt install -y nginx iproute2 vim 
+#RUN apt install-y apache2 apache2-utils  
+#RUN apt clean
 
 # create the cert
 #RUN openssl genrsa -out /etc/ssl/private/apache.key 2048
@@ -15,7 +16,7 @@ COPY ./apache.key /etc/ssl/private/apache.key
 
 
 # install apache services
-RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
+#RUN a2enmod ssl proxy proxy_ajp proxy_http rewrite deflate headers proxy_balancer proxy_connect proxy_html
 
 # remove last line
 #RUN head -n -1 etc/apache2/sites-enabled/000-default.conf > temp.txt ; 

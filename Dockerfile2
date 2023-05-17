@@ -1,0 +1,8 @@
+FROM httpd:2.4
+COPY ./index.html/ /usr/local/apache2/htdocs/index.html
+COPY apache.conf etc/apache2/sites-enabled/000-default.conf
+
+#RUN echo "Mutex posixsem" >> /etc/apache2/apache2.conf
+
+COPY ./apache.crt /etc/ssl/certs/apache.crt
+COPY ./apache.key /etc/ssl/private/apache.key
